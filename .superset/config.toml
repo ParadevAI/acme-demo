@@ -1,0 +1,7 @@
+# Test fixture for environment builds (SUPER-3017). Safe to remove.
+[install]
+run = [
+  '[ -z "${FAIL_INSTALL:-}" ] || { echo "FAIL_INSTALL is set"; exit 3; }',
+  'echo "built $(git rev-parse --short HEAD) at $(date -u +%FT%TZ)" > "$HOME/.install-marker"',
+  "sleep 5",
+]
